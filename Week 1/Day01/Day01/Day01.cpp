@@ -6,6 +6,10 @@
 #include <string>
 #include "Calculator.h"
 
+//
+// GLOBAL namespace
+//
+
 int AddOne(int localNumber)
 {
     return localNumber + 1;
@@ -19,9 +23,31 @@ void print(const std::vector<std::string>& names)
         std::cout << index++ << ". " << name << "\n";
 }
 
+/*
+
+1) create a print method to print a message (whatever message)
+2) pass the message as a parameter to the method
+3) call the method in main
+
+
+*/
+void print(std::string message)
+{
+    std::cout << message << "\n";
+}
+
+enum Material
+{
+    Wood, Stone, Iron, Gold, Diamond
+};
 
 int main()
 {
+    std::string msg = "Hello Gotham! (Aquaman stinks like the sea!)\n";
+    print(msg);
+
+    int anotherNumber = 5;
+    int aNumber = AddOne(anotherNumber);//PASS BY VALUE. making a copy.
     /*
       Calling a method
         use the methods name.
@@ -51,17 +77,18 @@ int main()
     //calling a non-static method, use the variable...
     Calculator t1000;
     int diff = t1000.minus(7, 2);
-
-
     /*
-        CHALLENGE #1:
+        CHALLENGE:
 
             Add an isEven method to the calculator.
             It should take 1 parameter and return a bool.
-
             Call the method on the t1000 calculator instance and print the results.
 
     */
+    int numberParam = 5;
+    bool amIEven = t1000.isEven(numberParam);
+    //ternary operator (a shorthand for if-else)
+    std::cout << numberParam << " is " << ((!amIEven) ? " NOT " : "") << " EVEN\n";
 
 
 
@@ -84,16 +111,26 @@ int main()
         1) on the initializer.
         2) using the push_back(item) method.
     */
-    std::vector<std::string> names { "Batman", "Bruce Wayne", "The Best" };
+    std::vector<std::string> names = { "Batman", "Bruce Wayne", "The Best" };
     names.push_back("The Greatest Detective");
     names.push_back("The Bat");
     names.push_back("The Joker");
     names.push_back("Bane");
     names.push_back("Poison Ivy");
 
+    names.erase(names.begin() + 5);
 
+
+    //code-snippets
+    for (auto& NAME : names)
+    {
+        std::cout << NAME << "\n";
+    }
+
+
+    //std::cout << names;
     /*
-        CHALLENGE #2:
+        CHALLENGE:
 
             Create a vector that stores floats. Call the variable grades.
             Add a few grades to the grades vector.
@@ -135,7 +172,7 @@ int main()
     std::cout << "\n\n";
 
     /*
-        CHALLENGE #3:
+        CHALLENGE:
 
             loop over the grades vector and print out each grade
 
@@ -178,7 +215,7 @@ int main()
 
     /*
 
-        CHALLENGE #4:
+        CHALLENGE 4:
 
             Using the vector of grades you created.
             Remove the last item in the vector.
