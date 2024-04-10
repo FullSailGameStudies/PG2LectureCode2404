@@ -98,11 +98,42 @@ int main()
     sameNumber += 10;
     std::cout << aNumber << "\n";
 
-    std::vector<std::string> names{ "Batman", "The Dark Knight", "The Best" };
+    std::vector<std::string> names{ "Batman", "Aquaman","Aquaman", "The Dark Knight", "The Best","Aquaman"};
+    //for (size_t i = 0; i < names.size();)
+    //{
+    //    if (_stricmp(names[i].c_str(), "Aquaman") == 0)
+    //    {
+    //        names.erase(names.begin() + i);
+    //    }
+    //    else
+    //        i++;
+    //}
+    ////OR...
+    //for (int i = names.size() - 1; i >= 0; i--)//a reverse for loop
+    //{
+    //    if (_stricmp(names[i].c_str(), "Aquaman") == 0)
+    //    {
+    //        names.erase(names.begin() + i);
+    //    }
+    //}
+    for (auto iter = names.begin(); iter != names.end(); )
+    {
+        if (_stricmp(iter->c_str(), "Aquaman") == 0)
+        {
+            iter = names.erase(iter);
+        }
+        else
+            iter++;
+    }
+
+
+    std::cout << "\nThe Justice League\n";
     for (auto& name : names)
     {
-        name = "Not Aquaman";
+        std::cout << name << "\n";
     }
+
+    
     /*
         ╔══════════════════════════════╗
         ║Parameters: Pass by Reference.║
@@ -141,8 +172,13 @@ int main()
         This is the way you pass by reference and prevent the method from changing the variable.
     */
     std::vector<int> highScores;
+    highScores.reserve(10);
+    printInfo(highScores);//size: 0?  capacity: 32767
     for (int i = 0; i < 10; ++i)
+    {
         highScores.push_back(rand());
+        printInfo(highScores);
+    }
     float avg = average(highScores);
 
 
@@ -208,7 +244,15 @@ int main()
             Remove all the failing grades (grades < 59.5).
             Print the grades.
     */
-
+    PrintGrades(grades);
+    for (size_t i = 0; i < grades.size(); )
+    {
+        if (grades[i] < 59.5)
+            grades.erase(grades.begin() + i);
+        else
+            i++;
+    }
+    PrintGrades(grades);
 
 
 
