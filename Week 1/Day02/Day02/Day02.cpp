@@ -70,6 +70,22 @@ void PrintGrades(const std::vector<float>& course)
         std::cout << course.at(i) << "\n";
     }
 }
+void Stats(float& min, float& max, const std::vector<float>& fullSailCourse)
+{
+    if (!fullSailCourse.empty())
+    {
+        min = max = fullSailCourse[0];
+        for (size_t i = 1; i < fullSailCourse.size(); i++)
+        {
+           /* if (min > fullSailCourse[i])
+                min = fullSailCourse[i];
+            if (max < fullSailCourse[i])
+                max = fullSailCourse[i];*/
+            min = std::min(min, fullSailCourse[i]);
+            max = std::max(max, fullSailCourse[i]);
+        }
+    }
+}
 int main()
 {
 
@@ -140,7 +156,9 @@ int main()
             2) call the method in main and print out the min, max.
 
     */
-
+    float minGrade, maxGrade;
+    Stats(minGrade, maxGrade, grades);
+    std::cout << "Low Grade: " << minGrade << "\nHigh Grade: " << maxGrade << "\n";
 
 
 
