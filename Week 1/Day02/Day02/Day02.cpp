@@ -36,8 +36,45 @@ void printInfo(const std::vector<int>& scores)
     std::cout << "size: " << scores.size() << "\tcapacity: " << scores.capacity() << "\n";
 }
 
+void DifferentScope(int& aDifferentName)//slight performance benefit
+{
+    aDifferentName += 10;
+    std::cout << aDifferentName << "\n";
+}
+void Get2ReturnValues(int& number, std::string& name)
+{
+    number++;
+    name += std::to_string(number);
+}
+
+void FillGrades(std::vector<float>& course)
+{
+    for (size_t i = 0; i < 10; i++)
+    {
+        //rand() is c way of getting random numbers
+        //rand() returns a random number from 0 - 32767 (short value)
+        // % gives the remainder after dividing
+        float random = (rand() % 10001)/100.0F;//0-10000 (inclusive)
+        course.push_back(random);
+    }
+}
 int main()
 {
+
+    int aNumber = 5;
+    std::string original = "Batman";
+    Get2ReturnValues(aNumber, original);
+    DifferentScope(aNumber);
+    //use & to create a reference variable
+    int& sameNumber = aNumber;//sameNumber is an alias to aNumber
+    sameNumber += 10;
+    std::cout << aNumber << "\n";
+
+    std::vector<std::string> names{ "Batman", "The Dark Knight", "The Best" };
+    for (auto& name : names)
+    {
+        name = "Not Aquaman";
+    }
     /*
         ╔══════════════════════════════╗
         ║Parameters: Pass by Reference.║
@@ -59,10 +96,16 @@ int main()
             Write a method to fill the vector of floats with grades.
             1) pass it in by reference
             2) add 10 grades to the vector
+            3) print the grades in main after calling the method
 
     */
     std::vector<float> grades;
-
+    FillGrades(grades);
+    std::cout << "\n\nPG2 Grades for 2404\n";
+    for (size_t i = 0; i < grades.size(); i++)
+    {
+        std::cout << grades.at(i) << "\n";
+    }
 
 
     /*
