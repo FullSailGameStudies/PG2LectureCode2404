@@ -58,6 +58,18 @@ void FillGrades(std::vector<float>& course)
         course.push_back(random);
     }
 }
+
+//pass by ref to prevent a copy (better performance)
+//add const to prevent modification
+void PrintGrades(const std::vector<float>& course)
+{
+    //course.clear();
+    std::cout << "\n\nPG2 Grades for 2404\n";
+    for (size_t i = 0; i < course.size(); i++)
+    {
+        std::cout << course.at(i) << "\n";
+    }
+}
 int main()
 {
 
@@ -101,11 +113,7 @@ int main()
     */
     std::vector<float> grades;
     FillGrades(grades);
-    std::cout << "\n\nPG2 Grades for 2404\n";
-    for (size_t i = 0; i < grades.size(); i++)
-    {
-        std::cout << grades.at(i) << "\n";
-    }
+    PrintGrades(grades);
 
 
     /*
