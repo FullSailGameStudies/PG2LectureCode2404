@@ -32,6 +32,16 @@ int LinearSearch(std::vector<int> numbers, int itemToFind)
     return foundIndex;//-1 is not a valid index.
 }
 
+void PrintGrades(const std::map<std::string, double>& course)
+{
+    std::cout << "\n\nPG2 Grades for 2404\n";
+    for (auto& [student,grade] : course)
+    {
+        std::cout << std::setw(15) << std::left << student << " ";
+        std::cout << std::setw(8) << std::right << std::fixed << std::setprecision(2) << grade << "\n";
+    }
+}
+
 int main()
 {
     /*
@@ -206,6 +216,7 @@ int main()
             Loop over your grades map and print each student name and grade.
 
     */
+    PrintGrades(grades);
 
 
 
@@ -233,6 +244,27 @@ int main()
     }
 
 
+    std::string itemToFind = "Chicken Nuggies";
+    auto foundIterator = menu.find(itemToFind);
+    if (foundIterator == menu.end()) //did not find
+        std::cout << itemToFind << " is not on the menu. I suggest you go to McDonald's\n";
+    else
+        std::cout << itemToFind << " costs " << foundIterator->second << "\n";
+
+    itemToFind = "Bacon Cheeseburger";
+    foundIterator = menu.find(itemToFind);
+    if (foundIterator == menu.end()) //did not find
+        std::cout << itemToFind << " is not on the menu. I suggest you go to McDonald's\n";
+    else
+    {
+        double oldPrice = foundIterator->second;
+        std::cout << itemToFind << " used to costs " << oldPrice << ".\n";
+        //foundIterator->second += 5;
+        menu[itemToFind] += 5;//overwrites the old value
+        std::cout << "Now it costs " << menu[itemToFind] << "!! Thanks Putin.\n";
+    }
+
+    //DO NOT LOOP to find something in a map
 
     /*
         CHALLENGE 5:
@@ -241,7 +273,30 @@ int main()
             If the student is found, print out the student's grade
             else print out a message that the student was not found
 
+        CHALLENGE 6:
+
+            Pick any student and curve the grade (add 5) that is stored in the grades map
+
     */
+    std::string nameOfStudent;
+    do
+    {
+        std::cout << "Student to find and curve: ";
+        std::getline(std::cin, nameOfStudent);
+        if (nameOfStudent.size() == 0) break;
+
+        auto foundStudent = grades.find(nameOfStudent);
+        if (foundStudent != grades.end())
+        {
+            double oldGrade = foundStudent->second;
+            foundStudent->second = std::min(100.0, oldGrade + 5);
+            std::cout << nameOfStudent << " had a grade of " << oldGrade << ". It is now " <<
+                grades[nameOfStudent] << "\n";
+            PrintGrades(grades);
+        }
+        else
+            std::cout << nameOfStudent << " was not found.\n";
+    } while (true);
 
 
 
@@ -260,11 +315,4 @@ int main()
     dorasBackpack[Weapon::Axe] = 1;//updates the count for the axe
 
 
-
-    /*
-        CHALLENGE 6:
-
-            Pick any student and curve the grade (add 5) that is stored in the grades map
-
-    */
 }
