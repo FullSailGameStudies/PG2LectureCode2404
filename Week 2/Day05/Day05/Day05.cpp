@@ -5,12 +5,32 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <iomanip>
 
 enum class Weapon
 {
     Sword, Axe, Spear, Mace
 };
 
+/// <summary>
+/// Finds the index of an item in the vector.
+/// </summary>
+/// <param name="numbers">The vector to search.</param>
+/// <param name="itemToFind">The number to find.</param>
+/// <returns>returns the index if found. returns -1 if not found.</returns>
+int LinearSearch(std::vector<int> numbers, int itemToFind)
+{
+    int foundIndex = -1;
+    for (size_t index = 0; index < numbers.size(); index++)
+    {
+        if (numbers[index] == itemToFind)
+        {
+            foundIndex = index;
+            break;
+        }
+    }
+    return foundIndex;//-1 is not a valid index.
+}
 
 int main()
 {
@@ -36,6 +56,12 @@ int main()
     */
     std::vector<int> numbers = { 0,1,2,3,4,5,6 };
     int searchNumber = 15;
+    int foundIndex = LinearSearch(numbers, searchNumber);
+    if (foundIndex != -1)
+        std::cout << "The number " << searchNumber << " was found at index " << foundIndex << "\n";
+    else
+        std::cout << "The number " << searchNumber << " was NOT found. \n";
+
 
 
 
@@ -75,6 +101,29 @@ int main()
     dorasBackpack[Weapon::Axe] = 7;//simply overwrites the value if the key is already in the map
 
 
+    std::map<std::string, double> menu;
+
+    //1) use the insert method
+    auto pair = std::make_pair("Cheese Burger", 9.99);
+    auto result = menu.insert(pair);
+    if (result.second)//was it inserted?
+    {
+    }
+
+    pair.second = 11.99;
+    result = menu.insert(pair);//will NOT insert it AND will NOT overwrite the value
+    auto iter = result.first;
+    bool wasInsert = result.second;
+    std::string key = iter->first;
+    double value = iter->second;
+    std::cout << key << " costs " << value << "\n";
+
+    //2) use [key] = value
+    menu["Bacon Cheeseburger"] = 11.99;
+    menu["Bacon Cheeseburger"] = 15.99;//overwrite the value
+
+    std::cout << menu["Impossible Burger"] << "\n";//what will it print?
+
     /*
         CHALLENGE 2:
 
@@ -82,6 +131,21 @@ int main()
             Add students and grades to your map.
 
     */
+
+    std::vector<std::string> students{
+        "Angel 1", "Cassandra", "Hector", "Kaylen", "Mikale", "Theo 1", "Tim", "Wesley",
+        "John", "Austin", "Rashid", "Clark", "Jacob", "Reki",
+        "Brandon", "Erick", "Eysue", "William", "Josean",
+        "Angel 2", "Joshua", "Theo 2", "Jason", "Max",
+        "Harold", "Jeremy"
+    };
+    std::map<std::string, double> grades;
+    srand(time(NULL));
+    for (auto& name : students)
+    {
+        grades[name] = rand() % 10001 / 100.0;
+    }
+
 
 
 
@@ -120,6 +184,21 @@ int main()
         std::cout << val << "\n";
     }
 
+
+    std::cout << "\nWelcome to Programmer's Haven\n";
+    for (const auto& [menuItem,itemPrice] : menu)
+    {
+        //itemPrice += 5;
+        std::cout << std::setw(20) << std::left << menuItem << " ";
+        std::cout << std::setw(7) << std::right << itemPrice << "\n";
+    }
+    std::cout << "\nWelcome to Programmer's Haven\n";
+    for (auto i = menu.begin(); i != menu.end(); i++)
+    {
+        std::cout << std::setw(20) << std::left << i->first << " ";
+        std::cout << std::setw(7) << std::right << i->second << "\n";
+    }
+    std::cout << "\n\n";
 
     /*
         CHALLENGE 4:
@@ -174,7 +253,7 @@ int main()
 
         [  Updating a value for a key in a map  ]
 
-        To update an exisiting value in the map, use the [ ]
+        To update an existing value in the map, use the [ ]
 
 
     */
