@@ -4,14 +4,27 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "Printer.h"
 
 std::string postFix(std::string fileName, int postFixNumber = 1) //postFixNumber is optional
 {
     return fileName + "_" + std::to_string(postFixNumber);
 }
 
+void TheBest(std::string name = "Batman")
+{
+    std::cout << "The best is " << name << "\n";
+}
+
 int main()
 {
+    TheBest();
+    TheBest("The Dark Knight");
+    TheBest("Aquaman??");
+
+    Printer print;
+    print.TheBest(5);
+    print.TheBest(50,"Spider-man");
 
     /*
         ╔═══════════════════════════════╗
