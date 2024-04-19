@@ -12,6 +12,15 @@ enum class Weapon
     Sword, Axe, Spear, Mace
 };
 
+void PrintGrades(const std::map<std::string, double>& grades)
+{
+    std::cout << "\nJLA Academy\n";
+    for (auto& [student,grade] : grades)
+    {
+        std::cout << std::setw(10) << std::left << student;
+        std::cout << std::setw(6) << std::right << std::fixed << std::setprecision(2) << grade << "\n";
+    }
+}
 
 int main()
 {
@@ -27,20 +36,20 @@ int main()
         erase(key) -- returns the # of items removed
 
     */
-    std::map<Weapon, int> backpack;
-    auto inserted = backpack.insert(std::make_pair(Weapon::Sword, 5));
-    backpack[Weapon::Axe] = 3;
+    std::map<Weapon, int> dorasbackpack;
+    auto inserted = dorasbackpack.insert(std::make_pair(Weapon::Sword, 5));
+    dorasbackpack[Weapon::Axe] = 3;
 
-    size_t numberRemoved = backpack.erase(Weapon::Sword);
+    size_t numberRemoved = dorasbackpack.erase(Weapon::Spear);
     if (numberRemoved > 0)
-        std::cout << "The Swords were removed.\n";
+        std::cout << "The Spear were removed.\n";
     else
-        std::cout << "Sword was not found in the map.\n";
+        std::cout << "Spear was not found in the map.\n";
 
-    std::map<Weapon, int>::iterator found = backpack.find(Weapon::Axe);
-    if (found != backpack.end())
+    std::map<Weapon, int>::iterator found = dorasbackpack.find(Weapon::Axe);
+    if (found != dorasbackpack.end())
     {
-        backpack.erase(found);
+        dorasbackpack.erase(found);
         std::cout << "The Axes were removed.\n";
     }
     else
@@ -66,11 +75,24 @@ int main()
     */
     srand((unsigned int)time(NULL));
     std::map<std::string, double> grades;
-    grades["Bruce"] = rand() % 101;
-    grades["Dick"] = rand() % 101;
-    grades["Diana"] = rand() % 101;
-    grades["Alfred"] = rand() % 101;
-    grades["Clark"] = rand() % 101;
-    grades["Arthur"] = rand() % 101;
-    grades["Barry"] = rand() % 101;
+    grades["Bruce"] = (rand() % 10001) / 100.0;
+    grades["Dick"] = rand() % 10001 / 100.0;
+    grades["Diana"] = rand() % 10001 / 100.0;
+    grades["Alfred"] = rand() % 10001 / 100.0;
+    grades["Clark"] = rand() % 10001 / 100.0;
+    grades["Arthur"] = rand() % 10001 / 100.0;
+    grades["Barry"] = rand() % 10001 / 100.0;
+
+    std::string name;
+    do
+    {
+        PrintGrades(grades);
+        std::cout << "Who should be dropped? ";
+        std::getline(std::cin, name);
+        if (name.size() == 0) break;
+
+        if (grades.erase(name) > 0) std::cout << name << " was removed!\n";
+        else std::cout << name << " is not in the academy.\n";
+
+    } while (true);
 }
