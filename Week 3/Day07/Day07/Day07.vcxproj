@@ -128,10 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Day07.cpp" />
+    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="MinecraftPlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Inventory.h" />
     <ClInclude Include="MinecraftPlayer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

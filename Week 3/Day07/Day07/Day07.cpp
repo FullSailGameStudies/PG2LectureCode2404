@@ -4,39 +4,40 @@
 #include <iostream>
 #include "MinecraftPlayer.h"
 #include "Color.h"
+#include "Inventory.h"
 
 
 /*              CLASSESS
 
-            ╔═════╗ ╔═════════╗
-            ║class║ ║SomeClass║
-            ╚═════╝ ╚═════════╝
-                │          │        
-             ┌──┘          │         
-        ┌────▼─────┐   ┌───▼───┐   
-        │ Keyword  │   │ Class │  
-        │          │   │  Name │
-        └──────────┘   └───────┘ 
+			╔═════╗ ╔═════════╗
+			║class║ ║SomeClass║
+			╚═════╝ ╚═════════╝
+				│          │
+			 ┌──┘          │
+		┌────▼─────┐   ┌───▼───┐
+		│ Keyword  │   │ Class │
+		│          │   │  Name │
+		└──────────┘   └───────┘
 
-        FIELDS - the data of the class
+		FIELDS - the data of the class
 
-        METHODS - the behavior of the class (what the class can do)
+		METHODS - the behavior of the class (what the class can do)
 
-        SPECIAL METHODS:
-            Getters/Setters - the gatekeepers of the fields
-            CONSTRUCTORS - the initializer of the class
-            DESTRUCTORS - destroys allocated memory.
-
-
-      
+		SPECIAL METHODS:
+			Getters/Setters - the gatekeepers of the fields
+			CONSTRUCTORS - the initializer of the class
+			DESTRUCTORS - destroys allocated memory.
 
 
-    ╔══════════════════╗
-    ║ ACCESS MODIFIERS ║ - determines who can see it
-    ╚══════════════════╝
-        public: EVERYONE can see it
-        private: ONLY this class can see it  (default)
-        protected: this class and all its descendent classes can see it
+
+
+
+	╔══════════════════╗
+	║ ACCESS MODIFIERS ║ - determines who can see it
+	╚══════════════════╝
+		public: EVERYONE can see it
+		private: ONLY this class can see it  (default)
+		protected: this class and all its descendent classes can see it
 
 
 
@@ -46,156 +47,180 @@
 
 int main()
 {
-    Color pixelColor;
-    pixelColor.red = 255;
-    
-    //creates an INSTANCE of the MinecraftPlayer class
-    MinecraftPlayer steev("St33v",10);//calling the DEFAULT constructor
-    MinecraftPlayer alex("Alex",20);//creates an INSTANCE of the MinecraftPlayer class
+	Color pixelColor;
+	pixelColor.red = 255;
 
-    //steev.Health(10);//calls the SETTER
-    std::cout << steev.Health() << "\n";//calls the GETTER
-    //steev.SetGamerTag("St33v");
-    std::cout << steev.GetGamerTag() << "\n";//calls the GETTER
+	//creates an INSTANCE of the MinecraftPlayer class
+	MinecraftPlayer steev("St33v", 10);//calling the DEFAULT constructor
+	MinecraftPlayer alex("Alex", 20);//creates an INSTANCE of the MinecraftPlayer class
 
-    //alex.Health(20);
-    steev.HUD();
-    alex.HUD();
-    /*
-        Lecture code: add a Car class
-    
-    */
+	//steev.Health(10);//calls the SETTER
+	std::cout << steev.Health() << "\n";//calls the GETTER
+	//steev.SetGamerTag("St33v");
+	std::cout << steev.GetGamerTag() << "\n";//calls the GETTER
 
-    /*
-        CHALLENGE:
+	//alex.Health(20);
+	steev.HUD();
+	alex.HUD();
+	/*
+		Lecture code: add a Car class
 
-            Create a Person class.
-            Right-Click the project and select "Add > Class..."
-
-    */
-
-
-
-
-    /*
-        ╔════════╗
-        ║ FIELDS ║ - the data members of the class
-        ╚════════╝
-
-        use mCamelCasingNamingConvention to name your fields in a C# class
-
-        int mModelYear;
-
-        Lecture code: add year, make, model fields to the car class
-
-    */
-
-    /*
-        CHALLENGE:
-            Add an age field and a name field to the Person class
-    */
+	*/
 
 
 
 
 
-    /*
-        ╔═════════╗
-        ║ METHODS ║ - the member functions of the class -- the behavior of the class (what it can do)
-        ╚═════════╝
+	/*
+		╔════════╗
+		║ FIELDS ║ - the data members of the class
+		╚════════╝
 
-        non-static methods can access the fields/methods of the class
-        static methods can only access the static members of the class
+		use mCamelCasingNamingConvention to name your fields in a C# class
 
-        EXAMPLE:
-        void whoAmI()
-        {
-            std::cout << mName;
-        }
+		int mModelYear;
 
-        Lecture code: add a vehicleInformation method
-    */
+		Lecture code: add year, make, model fields to the car class
 
-
-    /*
-        CHALLENGE:
-            write an ItsMyBirthday method. increment age and print out a happy message.
-    */
+	*/
 
 
 
 
 
-    /*
-        ╔═════════════════╗
-        ║ Getters/Setters ║ - the gatekeepers (control access) of the fields
-        ╚═════════════════╝
 
-        use camelCasingNamingConvention to name your getter/setter methods
+	/*
+		╔═════════╗
+		║ METHODS ║ - the member functions of the class -- the behavior of the class (what it can do)
+		╚═════════╝
 
+		non-static methods can access the fields/methods of the class
+		static methods can only access the static members of the class
 
-        int modelYear() const  //const says the method can't modify anything
-        {
-            return mModelYear;  //provides access to the field's value
-        }
+		EXAMPLE:
+		void whoAmI()
+		{
+			std::cout << mName;
+		}
 
-        void modelYear(int year)
-        {
-            mModelYear = year;
-        }
-
-        Lecture code: add getters/setters for year, make, model fields to the car class
-    */
-
-
-    /*
-
-        CHALLENGE:
-            Add Age getter/setter to provide access to the mAge field
-            Add a Name getter/setter for the mName field
-    */
+		Lecture code: add a vehicleInformation method
+	*/
 
 
 
 
-    /*
-        ╔══════════════╗
-        ║ CONSTRUCTORS ║ - the initializer of the class. Initialize the data of the class.
-        ╚══════════════╝
-
-        RULES FOR CONSTRUCTORS...
-        1) cannot have any return type, not even void
-        2) must have the same name as the class
-
-        HINT: use the ctor code snippet to provide a default contructor
-
-        Car(int year, std::string make)
-        {
-           mModelYear = year;
-           mMake = make;
-        }
-
-        Lecture code: add 2 ctors (default and non-default) to the car class
-    */
 
 
-    /*
 
-        CHALLENGE:
-            Add a constructor to the Person class to initialize the age and name fields
-    */
+	/*
+		╔═════════════════╗
+		║ Getters/Setters ║ - the gatekeepers (control access) of the fields
+		╚═════════════════╝
+
+		use camelCasingNamingConvention to name your getter/setter methods
+
+
+		int modelYear() const  //const says the method can't modify anything
+		{
+			return mModelYear;  //provides access to the field's value
+		}
+
+		void modelYear(int year)
+		{
+			mModelYear = year;
+		}
+
+		Lecture code: add getters/setters for year, make, model fields to the car class
+	*/
 
 
 
 
-    /*
-        ╔══════════════╗
-        ║  STRUCTURES  ║ - light-weight data objects
-        ╚══════════════╝
 
-        In C++, structs are just like classes EXCEPT members are public by default.
+	/*
+		╔══════════════╗
+		║ CONSTRUCTORS ║ - the initializer of the class. Initialize the data of the class.
+		╚══════════════╝
 
-        Lecture code: add struct for ManufacturerDetails (Name, YearEstablished)
-    */
+		RULES FOR CONSTRUCTORS...
+		1) cannot have any return type, not even void
+		2) must have the same name as the class
+
+		HINT: use the ctor code snippet to provide a default contructor
+
+		Car(int year, std::string make)
+		{
+		   mModelYear = year;
+		   mMake = make;
+		}
+
+		Lecture code: add 2 ctors (default and non-default) to the car class
+	*/
+
+
+	/*
+	CHALLENGE:
+
+		- Create an Inventory class.
+			Right-Click the project and select "Add > Class..."
+
+		- Fields
+			Add an items field (vector of strings)
+
+		- Getters/Setters
+			Add Count getter to return the # of items in the items field
+			Add a getter/setter for the items field
+
+		- methods
+			write a Show method to print the items
+
+		- constructors
+			Add a constructor to initialize the items field
+	*/
+
+	std::vector<std::string> items{
+		"Pistol", "Submachine gun", "Machete", "RPG", "Grenade"
+	};
+	Inventory dorasBackpack(items);
+	dorasBackpack.Show();
+
+	//C way to do random...
+	//rand()
+	srand(time(NULL));
+	int random = rand();//0-32767
+	// use % to limit the number to a specific range
+	random = rand() % 51;//0-50
+
+
+	/*
+		CHALLENGE:
+
+			- Create a Person class.
+				Right-Click the project and select "Add > Class..."
+
+			- Fields
+				Add an age field and a name field to the Person class
+
+			- Getters/Setters
+				Add Age getter/setter to provide access to the mAge field
+				Add a Name getter/setter for the mName field
+
+			- methods
+				write an ItsMyBirthday method. increment age and print out a happy message.
+
+			- constructors
+				Add a constructor to the Person class to initialize the age and name fields
+	*/
+
+
+	/*
+		╔══════════════╗
+		║  STRUCTURES  ║ - light-weight data objects
+		╚══════════════╝
+
+		In C++, structs are just like classes EXCEPT members are public by default.
+
+		Lecture code: add struct for ManufacturerDetails (Name, YearEstablished)
+	*/
 
 }
