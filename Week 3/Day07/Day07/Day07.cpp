@@ -2,6 +2,8 @@
 //
 
 #include <iostream>
+#include "MinecraftPlayer.h"
+#include "Color.h"
 
 
 /*              CLASSESS
@@ -44,6 +46,21 @@
 
 int main()
 {
+    Color pixelColor;
+    pixelColor.red = 255;
+    
+    //creates an INSTANCE of the MinecraftPlayer class
+    MinecraftPlayer steev("St33v",10);//calling the DEFAULT constructor
+    MinecraftPlayer alex("Alex",20);//creates an INSTANCE of the MinecraftPlayer class
+
+    //steev.Health(10);//calls the SETTER
+    std::cout << steev.Health() << "\n";//calls the GETTER
+    //steev.SetGamerTag("St33v");
+    std::cout << steev.GetGamerTag() << "\n";//calls the GETTER
+
+    //alex.Health(20);
+    steev.HUD();
+    alex.HUD();
     /*
         Lecture code: add a Car class
     
