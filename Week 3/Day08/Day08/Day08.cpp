@@ -6,10 +6,13 @@
 #include "Inheritance.h"
 #include "Polymorphism.h"
 #include "Car.h"
+#include "FlyingCar.h"
 
 
 int main()
 {
+	Car myRide(1988, "Ford", "Mustang GT5.0");
+	FlyingCar jetsonMobile(2025, "Tesla", "X-Wing");
 	/*
         ╔═══════════════╗
         ║  Inheritance  ║
@@ -42,17 +45,6 @@ int main()
 
 
 
-	/*
-        ╔*************╗
-        ║  CHALLENGE  ║
-        ╚*************╝
-
-            add a new class, Pistol, that derives from Weapon.
-            Pistol should have fields with getters/setters for rounds and magCapacity.
-            Add a constructor that calls the base constructor
-	
-	*/
-
 
 
 
@@ -73,17 +65,6 @@ int main()
 
 
 
-	/*
-        ╔*************╗
-        ║  CHALLENGE  ║
-        ╚*************╝
-
-			Add an OVERLOAD of the calcDamage method in the Weapon class.
-			The overload should take an int parameter called modifier
-			to increase the damage when calculating the damage.
-
-	*/
-
 
 
 
@@ -101,15 +82,6 @@ int main()
 
 
 
-	/*
-        ╔*************╗
-        ║  CHALLENGE  ║
-        ╚*************╝
-
-		overload the + in the Pistol class to add 2 pistols
-			- it sets the magCapacity to the max of the 2 pistols
-			- adds the # of rounds from both pistols. should not exceed the magCapacity.
-	*/
 
 
 
@@ -146,9 +118,24 @@ int main()
 
 
 	/*
-        ╔*************╗
-        ║  CHALLENGE  ║
-        ╚*************╝
+		╔*************╗
+		║  CHALLENGE  ║
+		╚*************╝
+
+			add a new class, Pistol, that derives from Weapon.
+			Pistol should have fields with getters/setters for rounds and magCapacity.
+			Add a constructor that calls the base constructor
+
+
+			Add an OVERLOAD of the calcDamage method in the Weapon class.
+			The overload should take an int parameter called modifier
+			to increase the damage when calculating the damage.
+
+
+			overload the + in the Pistol class to add 2 pistols
+				- it sets the magCapacity to the max of the 2 pistols
+				- adds the # of rounds from both pistols. should not exceed the magCapacity.
+	
 
 			Override Weapon's showMe method in the Pistol class.
 			In Pistol's version, call the base version then print out the rounds and magCapacity
@@ -160,6 +147,8 @@ int main()
 
 
 
+	//-----------------------------------------------
+	//  save for day 9
 	/*
 		╔════════════╗
 		║ Unique_ptr ║

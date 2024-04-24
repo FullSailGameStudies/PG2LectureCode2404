@@ -5,7 +5,7 @@ class Inventory
 {
 public:
 	Inventory(const std::vector<std::string>& items) : 
-		items_(items)
+		items_(items)//member initialization list
 	{
 	}
 
