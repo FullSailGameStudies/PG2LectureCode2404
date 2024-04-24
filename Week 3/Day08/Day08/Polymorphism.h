@@ -34,6 +34,14 @@ private:
 	double mBalance;
 
 public:
+	Account(double balance) : mBalance(balance)
+	{	}
+
+	Account operator+(Account const& acct2)
+	{
+		Account combined(mBalance + acct2.mBalance);
+		return combined;
+	}
 };
 
 
@@ -55,7 +63,8 @@ public:
 	{
 
 	}
-	void print()
+	//STEP 1: mark the BASE method as virtual
+	virtual void print()
 	{
 		std::cout << "Hello base " << mNum << "\n";
 	}
@@ -68,4 +77,12 @@ private:
 public:
 	derived(std::string str, int num) : base(num), mStr(str)
 	{ }
+	//STEP 2: provide a method with the same SIGNATURE (header) of the base method
+	void print() override
+	{
+		//a FULL override does NOT call the base method
+		//an EXTENDED override will call the base method
+		base::print();
+		std::cout << "Aquaman is the worst!!\n";
+	}
 };

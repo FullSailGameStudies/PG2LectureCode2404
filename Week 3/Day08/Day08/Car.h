@@ -13,7 +13,7 @@ public:
 	{
 		std::cout << "Car CTOR\n";
 	}
-	std::string vehicleInformation();
+	virtual std::string vehicleInformation() const;
 
 	void refuel()
 	{

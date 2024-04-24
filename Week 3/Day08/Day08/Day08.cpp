@@ -7,12 +7,21 @@
 #include "Polymorphism.h"
 #include "Car.h"
 #include "FlyingCar.h"
+#include <vector>
 
 
 int main()
 {
 	Car myRide(1988, "Ford", "Mustang GT5.0");
-	FlyingCar jetsonMobile(2025, "Tesla", "X-Wing");
+	FlyingCar jetsonMobile(2025, "Tesla", "X-Wing", 60);
+	jetsonMobile.vehicleInformation();
+
+	Account savings1(500);
+	Account savings2(100);
+	Account Savings3 = savings1 + 5;
+
+	std::vector<int> n1{ 1,2,3 }, n2{ 4,5,6 };
+	//std::vector<int> n3 = n1 + n2;
 	/*
         ╔═══════════════╗
         ║  Inheritance  ║

@@ -11,10 +11,8 @@ public:
 	FlyingCar(int year, std::string make, std::string model, float maxAltitude) :
 		Car(year,make,model)
 		,maxAlt_(maxAltitude)
-		//,mModelYear(year) 
-		//,mMake(make)
-		//,mModel(model)
 	{
+		//DO NOT duplicate what the base does
 		//mModelYear = year;
 		//mMake = make;
 		//mModel = model;
@@ -23,8 +21,10 @@ public:
 		//derived ctor code happens 2nd
 
 		std::cout << mModelYear << "\n";
-		//std::cout << mFuelLevel << "\n";
+		//std::cout << mFuelLevel << "\n";//cannot access private members of the base
 	}
+
+	std::string vehicleInformation() const override;
 private:
 	float maxAlt_;
 
