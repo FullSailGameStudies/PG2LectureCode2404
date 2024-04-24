@@ -8,6 +8,7 @@
 #include "Car.h"
 #include "FlyingCar.h"
 #include <vector>
+#include "Pistol.h"
 
 
 void DoIt()
@@ -165,6 +166,8 @@ int main()
 
 
 	*/
+	Pistol banger(10, 15, 200, 50);
+	//Weapon wpn(100, 200);
 
 
 

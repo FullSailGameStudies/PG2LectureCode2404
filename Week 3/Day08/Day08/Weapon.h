@@ -8,7 +8,7 @@ private:
 public:
 	Weapon(int range, int damage);
 
-	virtual void showMe();
+	virtual void showMe() = 0;
 	int calcDamage();
 	int calcDamage(int modifier);
 
