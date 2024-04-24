@@ -12,7 +12,10 @@ public:
 		: mModelYear(year), mMake(make), mModel(model), mFuelLevel(0), mMaxFuelLevel(15)
 	{
 		std::cout << "Car CTOR\n";
+		numberOfCarsMade_++;
 	}
+
+	//non-static methods can access non-static AND static members
 	virtual std::string vehicleInformation() const;
 
 	void refuel()
@@ -35,8 +38,18 @@ public:
 		}
 	}
 
+	static int numberOfCarsMade_;//static (SHARED across all instances)
+
+	//there is NO "this" parameter in static methods
+	//therefore, it cannot access NON-static members
+	//it can ONLY access static members
+	static void Report()
+	{
+		//std::cout << mModelYear;
+		std::cout << "Number of cars made: " << numberOfCarsMade_ << "\n";
+	}
 protected:
-	int mModelYear;
+	int mModelYear;//non-static
 	std::string mModel;
 	std::string mMake;
 

@@ -10,11 +10,24 @@
 #include <vector>
 
 
+void DoIt()
+{
+	static int num = 0;
+	std::cout << num << "\n";
+	num++;
+}
+
 int main()
 {
+	for (size_t i = 0; i < 10; i++)
+	{
+		DoIt();
+	}
 	Car myRide(1988, "Ford", "Mustang GT5.0");
 	FlyingCar jetsonMobile(2025, "Tesla", "X-Wing", 60);
 	jetsonMobile.vehicleInformation();
+
+	Car::Report();
 
 	Account savings1(500);
 	Account savings2(100);
