@@ -9,6 +9,7 @@
 #include "FlyingCar.h"
 #include <vector>
 #include "Pistol.h"
+#include "Knife.h"
 
 
 void DoIt()
@@ -166,8 +167,51 @@ int main()
 
 
 	*/
-	Pistol banger(10, 15, 200, 50);
+	Pistol banger(10, 15, 200, 50);//lives on the stack
+	Knife stabby(true, true, 3, 10);
 	//Weapon wpn(100, 200);
+	Pistol* pPistol = new Pistol(10, 15, 200, 50);//lives on the HEAP
+	(*pPistol).showMe();
+	pPistol->showMe();
+	//what is being "COPIED"? the memory address is being copied. NOT the object
+	Weapon* wpn2 = pPistol;//UPCASTING
+	std::cout << "\n" << wpn2 << "\n" << pPistol << "\n";
+
+	std::vector<Weapon*> inventory;
+	std::vector<std::unique_ptr<Weapon>> backpack;
+	backpack.push_back(std::make_unique<Knife>(true, true, 3, 10));
+	backpack.push_back(std::make_unique<Pistol>(10, 15, 200, 50));
+	std::cout << "\n\nDora's Backpack\n";
+	for (auto& wpn : backpack)
+	{
+		wpn->showMe();//runtime polymorphism
+	}
+
+
+	//??? Knife is-a Weapon
+	Weapon wpn1 = stabby;//performs a COPY
+
+	{
+		std::unique_ptr<Pistol> pGun = std::make_unique<Pistol>(10, 15, 200, 50);
+		//pGun->showMe();
+		std::unique_ptr<Weapon> baseWpn = std::move(pGun);
+		//pGun->showMe();
+	}//pGun goes out of scope and the Heap memory is deleted
+
+	int aNum = 5;
+	float fNum = aNum;//IMPLICIT cast
+	aNum = (int)n1.size();//EXPLICIT cast
+	aNum = std::stoi("5");
+
+
+	//int fave = 5;
+	//int* pNum = &fave;//pointer to the stack
+	//pNum = new int(10);//allocate the int on the HEAP
+	//int* otherPointer = pNum;
+	//delete otherPointer;
+	//std::cout << fave << "\n" << (*pNum) << "\n";
+	//delete pNum;//delete anything that you have "newed" = new
+	//std::cout << fave << "\n" << (*pNum) << "\n";
 
 
 

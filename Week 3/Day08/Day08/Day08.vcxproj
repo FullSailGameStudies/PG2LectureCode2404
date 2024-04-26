@@ -130,6 +130,7 @@
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="Day08.cpp" />
     <ClCompile Include="FlyingCar.cpp" />
+    <ClCompile Include="Knife.cpp" />
     <ClCompile Include="Pistol.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
@@ -137,6 +138,7 @@
     <ClInclude Include="Car.h" />
     <ClInclude Include="FlyingCar.h" />
     <ClInclude Include="Inheritance.h" />
+    <ClInclude Include="Knife.h" />
     <ClInclude Include="Pistol.h" />
     <ClInclude Include="Polymorphism.h" />
     <ClInclude Include="Weapon.h" />
