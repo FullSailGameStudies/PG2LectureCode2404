@@ -6,6 +6,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include "Player.h"
 
 
 
@@ -25,6 +26,67 @@
 int main()
 {
     std::cout << "Hello PG2!\n";
+
+    std::string path = "C:\\temp\\2404\\";
+    std::string fileName = "2404.txt";
+    std::string fullPath = path + fileName;
+    char delimiter = '$';
+    std::ofstream outFile(fullPath);
+    if (outFile.is_open())
+    {
+        outFile << "Hello Gotham!\n" << delimiter << 5 << delimiter << 12.7;
+    }
+    else
+        std::cout << "That file could not be opened: " << fullPath << "\n";
+    outFile.close();
+
+    std::string line;
+    std::ifstream infile(fullPath);
+    if (infile.is_open())
+    {
+        while (std::getline(infile, line))
+        {
+            std::cout << line << "\n";
+
+            std::string lineData;
+            //getline uses streams
+            std::stringstream lineStream(line);
+            while (std::getline(lineStream, lineData, delimiter))
+            {
+                std::cout << lineData << "\n";
+            }
+        }
+    }
+    else
+        std::cout << "That file could not be opened: " << fullPath << "\n";
+    infile.close();
+
+
+    {
+        Player steev("Steve", 20, 20, 20);
+        std::ofstream playerFile("Player.csv");
+        if (playerFile.is_open())
+        {
+            steev.Serialize(playerFile, '$');
+        }
+        else
+            std::cout << "That file could not be opened\n";
+
+    }
+
+    std::ifstream inPlayer("Player.csv");
+    if (inPlayer.is_open())
+    {
+        std::string playerLine;
+        std::getline(inPlayer, playerLine);
+        Player alex = Player::Deserialize('$', playerLine);
+        //Player alex(playerLine, '$');
+        //std::cout << alex.GamerTag() << " " << alex.Armor() << "\n";
+
+        alex.Serialize(std::cout, '\n');
+    }
+    else
+        std::cout << "That file could not be opened\n";
 
     /*
 
